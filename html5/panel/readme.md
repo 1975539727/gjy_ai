@@ -18,3 +18,10 @@
       - 子元素们不会换行 
     - 100vh 相对单位
        view height 不同设备但是等比例单位 屏幕高度
+       view width
+      
+- 前端核心用户体验
+   - 和谐
+   - 艺术性 ，充满期待
+   transition :0.3s opacity ease-in 0.4s;
+   - 让用户尖叫的体验

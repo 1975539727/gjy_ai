@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闯关小游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="stage-info">当前阶段: 春季</div>
+        <div id="level-info">当前关卡: 1</div>
+        <canvas id="game-canvas"></canvas>
+        <div id="controls">
+            <button id="left-btn">左移</button>
+            <button id="right-btn">右移</button>
+            <button id="action-btn">行动</button>
+        </div>
+    </div>
+    <audio id="spring-audio" src="spring-sound.mp3" loop></audio>
+    <audio id="summer-audio" src="summer-sound.mp3" loop></audio>
+    <audio id="autumn-audio" src="autumn-sound.mp3" loop></audio>
+    <audio id="winter-audio" src="winter-sound.mp3" loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>

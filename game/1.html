@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彩色泡泡爆破</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+            user-select: none;
+        }
+        
+        #game-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            margin: 20px auto;
+            background-color: white;
+        }
+        
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.1s;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        
+        .bubble:hover {
+            transform: scale(1.05);
+        }
+        
+        #score-display {
+            font-size: 24px;
+            margin: 10px;
+            color: #333;
+        }
+        
+        #timer {
+            font-size: 20px;
+            margin: 10px;
+            color: #e74c3c;
+        }
+        
+        #start-btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #start-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        #game-over {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>彩色泡泡爆破</h1>
+    <p>点击出现的泡泡得分！60秒内看你能得多少分！</p>
+    
+    <div id="score-display">得分: 0</div>
+    <div id="timer">剩余时间: 60秒</div>
+    <button id="start-btn">开始游戏</button>
+    
+    <div id="game-container">
+        <div id="game-over">
+            <h2>游戏结束!</h2>
+            <p id="final-score">你的得分: 0</p>
+            <button id="restart-btn">再玩一次</button>
+        </div>
+    </div>
+    
+    <script>
+        const gameContainer = document.getElementById('game-container');
+        const scoreDisplay = document.getElementById('score-display');
+        const timerDisplay = document.getElementById('timer');
+        const startBtn = document.getElementById('start-btn');
+        const gameOverDiv = document.getElementById('game-over');
+        const finalScoreDisplay = document.getElementById('final-score');
+        const restartBtn = document.getElementById('restart-btn');
+        
+        let score = 0;
+        let timeLeft = 60;
+        let gameInterval;
+        let timerInterval;
+        let isGameRunning = false;
+        
+        // 泡泡颜色数组
+        const bubbleColors = [
+            '#FF5252', '#FF4081', '#E040FB', '#7C4DFF', 
+            '#536DFE', '#448AFF', '#40C4FF', '#18FFFF', 
+            '#64FFDA', '#69F0AE', '#B2FF59', '#EEFF41', 
+            '#FFFF00', '#FFD740', '#FFAB40', '#FF6E40'
+        ];
+        
+        // 创建泡泡
+        function createBubble() {
+            if (!isGameRunning) return;
+            
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            
+            // 随机大小 (30-80px)
+            const size = Math.floor(Math.random() * 50) + 30;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            
+            // 随机位置
+            const maxX = gameContainer.clientWidth - size;
+            const maxY = gameContainer.clientHeight - size;
+            const posX = Math.floor(Math.random() * maxX);
+            const posY = Math.floor(Math.random() * maxY);
+            bubble.style.left = `${posX}px`;
+            bubble.style.top = `${posY}px`;
+            
+            // 随机颜色
+            const colorIndex = Math.floor(Math.random() * bubbleColors.length);
+            bubble.style.backgroundColor = bubbleColors[colorIndex];
+            
+            // 点击事件
+            bubble.addEventListener('click', () => {
+                if (!isGameRunning) return;
+                
+                // 播放爆破音效
+                playPopSound();
+                
+                // 增加分数
+                score++;
+                scoreDisplay.textContent = `得分: ${score}`;
+                
+                // 爆破动画
+                bubble.style.transform = 'scale(1.2)';
+                bubble.style.opacity = '0';
+                
+                // 移除泡泡
+                setTimeout(() => {
+                    bubble.remove();
+                }, 200);
+            });
+            
+            gameContainer.appendChild(bubble);
+            
+            // 泡泡自动消失 (3-6秒)
+            setTimeout(() => {
+                if (bubble.parentNode) {
+                    bubble.style.opacity = '0';
+                    setTimeout(() => bubble.remove(), 300);
+                }
+            }, Math.random() * 3000 + 3000);
+        }
+        
+        // 播放爆破音效
+        function playPopSound() {
+            const popSound = new Audio();
+            popSound.src = 'https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3';
+            popSound.play().catch(e => console.log('无法播放音效:', e));
+        }
+        
+        // 开始游戏
+        function startGame() {
+            if (isGameRunning) return;
+            
+            // 重置游戏状态
+            score = 0;
+            timeLeft = 60;
+            isGameRunning = true;
+            scoreDisplay.textContent = `得分: ${score}`;
+            timerDisplay.textContent = `剩余时间: ${timeLeft}秒`;
+            gameOverDiv.style.display = 'none';
+            
+            // 清除所有现有泡泡
+            document.querySelectorAll('.bubble').forEach(bubble => bubble.remove());
+            
+            // 开始生成泡泡
+            gameInterval = setInterval(createBubble, 800);
+            
+            // 开始倒计时
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerDisplay.textContent = `剩余时间: ${timeLeft}秒`;
+                
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+        }
+        
+        // 结束游戏
+        function endGame() {
+            isGameRunning = false;
+            clearInterval(gameInterval);
+            clearInterval(timerInterval);
+            
+            // 显示游戏结束界面
+            finalScoreDisplay.textContent = `你的得分: ${score}`;
+            gameOverDiv.style.display = 'block';
+        }
+        
+        // 事件监听
+        startBtn.addEventListener('click', startGame);
+        restartBtn.addEventListener('click', startGame);
+    </script>
+</body>
+</html>

@@ -20,4 +20,5 @@ hu.sayHello()
 console.log(hu.__proto__.__proto__)
 let o={a:1};
 console.log(o.__proto__)
+console.log(o.toString());
 // console.log(new Person('小公主',18))

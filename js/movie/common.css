@@ -2,28 +2,36 @@ main {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    background-color:#2E3A59;
+
 }
 .movie {
     width: 300px;
     margin: 1rem;
     position: relative;
+    overflow: hidden; /* 添加这行 */
+    background-color:  #1f2b47;
+    border-radius: 12px; /* 添加圆角，数值可根据喜好调整 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 可选：添加轻微阴影增强立体感 */
 }
+
 .movie img{
     width:100%
 }
 
 .overview {
     background-color: #fff;
-    padding:2rem;
+    padding:1rem;
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     min-height: 100%;
     transform: translateY(101%);
-    overflow-y: hidden;
+    overflow-y: auto;
     transition: transform 0.3s ease-in;
 }
-.movie:hover .overview {
+/* 伪类选择器 */
+.movie:hover .overview { 
     transform: translateY(0);
 }

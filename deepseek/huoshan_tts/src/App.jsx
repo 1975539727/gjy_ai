@@ -25,7 +25,7 @@ function App() {
   }
   // 取调用火山接口，返回语音
   const generateAudio =() =>{
-    const voiceName ="multi_female_shuangkuaisisi_moon_bigtts"; // 角色
+    const voiceName ="zh_female_mengyatou_mars_bigtts"; // 角色
     const endpoint="/tts/api/v1/tts";
 
     const headers ={

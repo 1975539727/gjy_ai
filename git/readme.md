@@ -9,5 +9,5 @@
    - create a repo
 
 # git 配置
-- git config --global user.name "1975539727"
-- git config --global user.email "1975539727@qq.com"
+- git config --global user.name 
+- git config --global user.email 

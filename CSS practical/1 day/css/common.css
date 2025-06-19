@@ -1,0 +1,58 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ee6c4d; 
+    /* 设置 body 高度为视口高度 */
+    height: 100vh;
+    /* 使用 flex 布局 */
+    display: flex;
+    /* 水平居中 */
+    justify-content: center;
+    /* 垂直居中 */
+    align-items: center;
+}
+.container {
+    position: relative; /* 设置容器为相对定位，作为绝对定位的参考点 */
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px;
+}
+
+.txt{
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+
+
+}
+.search-btn{
+    color:#e17055 ;
+    float: right;
+    width: 40px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    transition: 0.4s;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+  }
+  
+  .container:hover > .txt{
+    width: 240px;
+  padding: 0 6px;
+  }
+  .container:hover > .search-btn{
+  background: white;
+  }
+  

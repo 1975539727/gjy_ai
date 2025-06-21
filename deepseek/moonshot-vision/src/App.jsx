@@ -24,7 +24,49 @@ function App() {
       setIsVaild(true)
     }
   }
-  const update =() =>{
+  const update = async () =>{
+    if(!imgBase64Data) return
+    // 错误写法
+    // const endpoint = "https://api.moonshot.cn/v1/chat/cpmpletions";
+    // 正确写法
+    const endpoint = "https://api.moonshot.cn/v1/chat/completions";
+    const headers ={
+      "Content-Type": "application/json",
+      // 授权码 Bearer 一般都会带
+      'Authorization':`Bearer ${import.meta.env.VITE_API_KEY}`
+    }
+    // 实时反馈给用户
+    setContent('正在生成中...')
+    const response = await fetch(
+      endpoint,
+      {
+      method:"POST",
+      headers,// es6中 JSON  key value 相同可以省略
+      body:JSON.stringify({
+        model:'moonshot-v1-8k-vision-preview',
+        messages:[
+          {
+            role:'user',
+            content:
+            [
+              {
+                type:"image_url",
+                image_url:{
+                  "url":imgBase64Data,
+                }
+              },
+              {
+                type:"text",
+                text:"请描述这张图片的内容"
+              }
+            ]
+          }
+        ]
+      })
+     })
+     //  二进制字节流 json 也是异步的
+     const data = await response.json()
+     setContent(data.choices[0].message.content)
   }
   return (
     <div>

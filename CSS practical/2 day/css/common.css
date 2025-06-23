@@ -1,0 +1,42 @@
+body {
+    background-color: #333333;
+    margin: 0px;
+    padding: 0px;
+     /* 设置 body 为 Flex 容器 */
+     display: flex;
+     /* 水平居中 */
+     justify-content: center;
+     /* 垂直居中 */
+     align-items: center;
+     /* 让 body 高度占满视口 */
+     height: 100vh;
+}
+.container {
+    width: 960px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    /* 垂直居中 */
+    align-items: center;
+}
+.iconfont {
+   font-size: 35px;
+   position: absolute;
+   padding: 7px;
+   width: 3rem;
+   color: #fff;
+   transition: all 0.5s ease;
+   
+}
+.icon-zhiwenyanzheng{
+    background-color: #10b1b1;
+    border-radius: 50%;
+}
+.icon-jiangpai1{
+    background-color: #b60fb0;
+    border-radius: 50%;
+}
+.icon-laba{
+    background-color: #444444;
+    border-radius: 50%;
+}

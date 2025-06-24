@@ -5,14 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="common.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <div class="bdswitch">
-        <h1>Theme</h1>
-        <div class="theme-switcher">
-            <button class="themes" onclick="Lightthemes()">Light</button>
-            <button class="themes" onclick="Darkthemes()">Dark</button>
-            <button class="themes" id="Black-themes">Black</button>
+    <div class="menu">
+        <div class="menu-header">
+            <div class="menu-header-title">
+                <h2>Theme</h2>
+            </div>
+            <div class="theme-switcher">
+                <input type="radio" name="themes" id="light-theme" />
+                <label for="light-theme">
+                    <ion-icon name="sunny-outline"></ion-icon>
+                    <span> Light</span>
+                </label>
+                <input type="radio" name="themes" id="dark-theme" />
+                <label for="dark-theme">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span> Dark</span>
+                </label>
+                <input type="radio" name="themes" id="black-theme" />
+                <label for="black-theme">
+                    <ion-icon name="contrast-outline"></ion-icon>
+                    <span>Black</span>
+                </label>
+                <span class="slider"></span>
+            </div>
+           
+        </div>
+        <div class="menu-body">
+            <a href="#">
+                <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                Chat
+            </a>
+            <a href="#">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                About
+            </a>
+            <a href="#">
+                <ion-icon name="mail-outline"></ion-icon>
+                Support
+            </a>
         </div>
     </div>
     <script src="common.js"></script>

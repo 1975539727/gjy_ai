@@ -1,26 +1,56 @@
+/* 默认主题（浅色模式） */
+:root {
+    --c-text-primary: #191919;
+    --c-text-secondary: #737374;
+    --c-border-primary: #ccc;
+    --c-bg-body: #ccc;
+    --c-bg-primary: #fff;
+    --c-bg-secondary: #d4d8dd;
+    --c-bg-button: #fff;
+}
+
+/* 深色主题 */
+:root.dark-theme {
+    --c-text-primary: #eee;
+    --c-text-secondary: #d3d5db;
+    --c-border-primary: #454545;
+    --c-bg-body: #5e5e5e;
+    --c-bg-primary: #323339;
+    --c-bg-secondary: #222128;
+    --c-bg-button: #494a50;
+}
+
+/* 黑色主题 */
+:root.black-theme {
+    --c-text-primary: #edeeef;
+    --c-text-secondary: #d4d7e1;
+    --c-border-primary: #323232;
+    --c-bg-body: #000;
+    --c-bg-primary: #1b1d23;
+    --c-bg-secondary: #000001;
+    --c-bg-button: #343844;
+} 
+
 body {
-    margin: 0;
-    padding: 0;
-    background-color: rgb(204, 204, 204); 
-}
-.bdswitch {
-    background-color: white;
-    width: 300px;
-    height: 450px;
-    border-radius: 5%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.bdswitch h1{
-    margin: 40px 0 0 20px ;
-}
-.bdswitch .theme-switcher{
-    background-color: red;
     display: flex;
+    font-family: sans-serif;
+    line-height: 1.5;
     justify-content: center;
+    background-color: var(--c-bg-body);
+    transform: background-color 1s ease;
+    color: var(--c-text-primary);
 }
-.bdswitch .theme-switcher  .themes{
-    margin: 5px;
+.menu {
+    width: 90%;
+    margin-top: 80px;
+    max-width: 320px;
+    background-color: var(--c-bg-primary);
+    transition: background-color 0.3s ease;
+    border-radius: 15px;
+}
+.menu-header {
+    padding: 1rem;
+}
+.menu-header-title {
+    font-size: 1.2rem;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,6 +36,10 @@
         </div>
         <div class="menu-body">
             <a href="#">
+                <ion-icon name="settings-outline"></ion-icon>
+                Seetings
+            </a>
+            <a href="#">
                 <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
                 Chat
             </a>
@@ -49,6 +53,15 @@
             </a>
         </div>
     </div>
-    <script src="common.js"></script>
+    <script >
+        var html=document.getElementsByTagName('html')
+        var radios=document.getElementsByName('themes')
+        for(i=0;i<radios.length;i++){
+            radios[i].addEventListener('change',function(){
+                html[0].classList.remove(html[0].classList.item(0))
+                html[0].classList.add(this.id)
+            })
+        }
+    </script>
 </body>
 </html>

@@ -54,7 +54,7 @@
         console.log(item);
         // 没有值,退出 data-original item.dataset.original 
         if(item.dataset.original === ""){
-            retuen ;
+            return ;
         }
         // img 标签对象在视口的位置 
         rect=item.getBoundingClientRect();
@@ -73,7 +73,7 @@
                 item.removeAttribute('data-original');// 性能,不用在迭代item
                 item.removeAttribute('lazyload');// 性能,不用在迭代item
             }
-            })()
+          })()
         }
       })
     }

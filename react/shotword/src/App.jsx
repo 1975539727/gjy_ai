@@ -1,36 +1,36 @@
 import { useState } from 'react'
 import './App.css'
-import PictureCard from './components/PictureCard'
-
+import PictureCard from './components/PictureCard';
+import { generateAudio } from './lib/audio';
 function App() {
-  const userPrompt = `分析图片内容,找出最能描述图片的一个英文单词,尽量选择更简单的A1~A2的词汇。
+  const userPrompt = `分析图片内容，找出最能描述图片的一个英文单词，尽量选择更简单的A1~A2的词汇。
 
-  返回JSON数据:
+  返回JSON数据：
   { 
   "image_discription": "图片描述", 
   "representative_word": "图片代表的英文单词", 
   "example_sentence": "结合英文单词和图片描述，给出一个简单的例句", 
-  "explaination": "结合图片解释英文单词,段落以Look at...开头，将段落分句，每一句单独一行，解释的最后给一个日常生活有关的问句", 
+  "explaination": "结合图片解释英文单词，段落以Look at...开头，将段落分句，每一句单独一行，解释的最后给一个日常生活有关的问句", 
   "explaination_replys": ["根据explaination给出的回复1", "根据explaination给出的回复2"]
   }`;
-  // 上传图片的状态
-  const [word,setWord] =useState('')
+  // 上传图片的状态 
+  const [word, setWord] = useState('请上传图片');
   // 例句
-  const  [sentence,setSentence]=useState('')
+  const [sentence, setSentence] = useState('')
   // 解释
-  const [explainations,setExplainations]=useState([]);
-  const [expReply,setExpReply]=useState([]);
+  const [explainations, setExplainations] = useState([]);
+  const [expReply, setExpReply] = useState([]);
   // 英文声音
-  const [audio,setAudio]=useState('')
-  // 详细内容展开 
-  const [detailExpand,setDetailExpand]=useState(false)
-  const [imgPreview,setImgPreview]=useState('https://res.bearbobo.com/resource/upload/W44yyxvl/upload-ih56twxirei.png')
-  const uploadImg = async (imageData) =>{
-    setImgPreview(imageData)
+  const [audio, setAudio] = useState('');
+  // 详细内容展开
+  const [detailExpand, setDetailExpand] = useState(false);
+  const [imgPreview, setImgPreview] = useState('https://res.bearbobo.com/resource/upload/W44yyxvl/upload-ih56twxirei.png')
+  const uploadImg = async (imageData) => {
+    setImgPreview(imageData);
     const endpoint = 'https://api.moonshot.cn/v1/chat/completions';
     const headers = { 
       'Content-Type': 'application/json', 
-      Authorization: `Bearer ${import.meta.env.VITE_KIMI_API_KEY}` 
+      'Authorization': `Bearer ${import.meta.env.VITE_KIMI_API_KEY}` 
     };
     setWord('分析中...');
     const response = await fetch(endpoint, {
@@ -60,46 +60,51 @@ function App() {
     setSentence(replyData.example_sentence);
     setExplainations(replyData.explaination.split('\n'));
     setExpReply(replyData.explaination_replys);
+    // url -> audio  一直都在 
+    // base64 资源 比较小 -> atob -> uint8array  ->blob -> URL.createObjectURL 
+    // -> 临时地址 -> audio 展示 -> 
+    const audioUrl = await generateAudio(replyData.example_sentence);
+    console.log(audioUrl,'app');
+    setAudio(audioUrl);
   }
+
   return (
-     <div className='container'>
-      <PictureCard 
-        word={word}
-        sentence={sentence}
+    <div className="container">
+      <PictureCard
         audio={audio}
+        word={word}
         uploadImg={uploadImg}
       />
       <div className="output">
         <div>{sentence}</div>
         <div className="details">
-          <button onClick={()=>setDetailExpand(!detailExpand)}>Talk about it</button>
+          <button onClick={() => setDetailExpand(!detailExpand)}>Talk about it</button>
           {
-            detailExpand ?(
+            detailExpand ? (
               <div className="expand">
-                <img src={imgPreview} alt="preview" />
+                <img src={imgPreview} alt="preview"/>
                 {
-                  explainations.map((explaination,index)=>{
-                      <div key={index} className="explaination">
-                        {explaination}
-                      </div>
-                  })
+                  explainations.map((explaination,index)=>(
+                    <div key={index} className='explanation'>
+                      {explaination}
+                    </div>
+                  ))
                 }
                 {
-                    expReply.map((reply,index)=>{
-                      <div key={index} className="reply">
-                        {reply}
-                      </div>
-                    })
-                  }
+                  expReply.map((reply,index)=>(
+                    <div key={index} className='reply'>
+                      {reply}
+                    </div>
+                  ))
+                }
               </div>
-            ):(
-              <div className="fold"/>
+            ): (
+              <div className="fold" />
             )
           }
         </div>
       </div>
     </div>
-    
   )
 }
 

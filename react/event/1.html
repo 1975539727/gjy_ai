@@ -24,16 +24,16 @@
         </div>
     </div>
     <script>
-     // html,css,js 各司其职
-     // 行类样式少用
-     // js 事件也不要用 DOM0 html js 耦合在一起 
-     // DOM0 和DOM2 混用,不好维护了
-     // addEventListener  统一用  useCapture  能力
-     document.getElementById('parent')
-       .addEventListener('click',function(event){
-        console.log(event.target,'////')
-          console.log('父元素clicked')
-       },true)
+    // html,css,js 各司其职
+    // 行类样式少用
+    // js 事件也不要用 DOM0 html js 耦合在一起 
+    // DOM0 和DOM2 混用,不好维护了
+    // addEventListener  统一用  useCapture  能力
+    document.getElementById('parent')
+    .addEventListener('click',function(event){
+    console.log(event.target,'////')
+        console.log('父元素clicked')
+    },true)
     document.getElementById('child')
     .addEventListener('click',function(event){
         console.log('子元素clicked')

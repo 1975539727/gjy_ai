@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-sc ale=1.0">
     <title>JS DOM2 事件机制</title>
     <style>
         #parent {
@@ -31,9 +31,9 @@
     // addEventListener  统一用  useCapture  能力
     document.getElementById('parent')
     .addEventListener('click',function(event){
-    console.log(event.target,'////')
+        // console.log(event.target,'////')
         console.log('父元素clicked')
-    },true)
+    },false)
     document.getElementById('child')
     .addEventListener('click',function(event){
         console.log('子元素clicked')

@@ -8,7 +8,7 @@ const TodoItem =(props)=>{
   const {onToggle,onDelete}=props;
 
    return (
-     <div id="todo-item">
+     <div className="todo-item">
         <input type="checkbox" checked={isComplete}  onChange={onToggle}/>
         <span className="isComplete? 'completed':''">{text}</span>
         <button onClick={onDelete}>Delete</button>

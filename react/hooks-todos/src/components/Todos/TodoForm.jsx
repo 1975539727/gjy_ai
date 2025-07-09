@@ -20,7 +20,6 @@ const TodoForm=({onAddTodo})=>{
         <div >
             <h1 className='header'>TodoList</h1>
             <form className='todo-input' onSubmit={handleSubmit}>
-          
              <input 
              type="text" 
              value={text}

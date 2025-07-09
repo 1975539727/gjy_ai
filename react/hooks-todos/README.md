@@ -51,8 +51,61 @@
    - react 倾向于原生JS   入门难
       - hooks ? 
    - <input  v-model="text" />  vue 双向绑定  
-     <input value={text} onChange={e => setText(e.target.value)} />
+     <input value={text} onChange={e => setText(e.target.value) } />
      react 坚持 单向绑定 
+
+- 本地存储
+   - localStorage  html5 
+       key:value 存储 
+       setItem(key,value)
+       getItem(key)
+       removeItem(key)
+
+   - BOM Browser Object Model 浏览器对象模型
+   - DOM Document Object Model 文档对象模型
+- 本地存储
+   - localStorage   和 cookie 有什么异同 ?
+   - http 无状态,head cookie 带上 
+   - 如果cookie 太大,影响http  性能  一般是4KB大小
+   - cookie 前端,后端都可以设置 
+      过期时间 
+      domain 域名   隔离 
+   - localStorage  只在服务器端
+      domain 
+      todos 
+      5MB  
+   - IndexDB 数据库 GB
+
+   ## 自定义hooks
+     - 自己定义的
+     - use
+     - 某一些功能
+       简单函数的封装
+       响应式的状态
+       effect 
+       todos
+
+- 自定义hooks
+   - 现代react app 的架构一部分
+   - hooks目录
+       自定义hooks 
+       框架common 部分 
+       业务定制 ahooks 
+   - use 开头
+     state,effect 逻辑封装复用 
+   - return 
+     todos,addTodo,toggle,deleteTodos
+     函数式编程思想的体现 
+   - 组件更好的聚焦于模版渲染
+   - 全面hooks函数式编程 
+
+- 两个遗憾 
+   - ../../  路径山路十八
+      vite 配置alias 短路径
+   - toggle,delete  跨越组件层级有点多,useContext 
+   
+     
+
 
 
 

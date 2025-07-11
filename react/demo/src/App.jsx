@@ -2,27 +2,18 @@ import {
   useState,
   useEffect
  } from 'react'
-
-function App() {
-  const [count, setCount] = useState(0)
-  const [num, setNumber] = useState(0)
-  useEffect(() => {
-    console.log('count组件渲染完了')
-  }, [count])
- 
-
-  const handleClick = () => {
-    setCount(count + 1)
-   
+import './App.css'
+function App() {  
+  const [theme,setTheme] = useState('light');
+  const change= ()=>{
+    setTheme(theme === 'light' ? 'dark' : 'light');
   }
   return (
     <>
-      <button onClick={handleClick}>点我</button>
-      <div>{count}</div>
-      {num}
-     <button onClick={()=>{
-      setNumber(num+1)
-     }}>点我</button>
+    <div className={`body ${theme}`}>
+      {theme}
+      <button onClick={change}>切换</button>
+    </div>
     </>
   )
 }

@@ -7,8 +7,8 @@ function App() {
   console.log(ThemeContext,'////')
   return (
     <ThemeContext.Provider value={theme}>
-     <Page  />
-     <button onClick={()=>setTheme("dark")}>切换主题</button>
+     <Page />
+     <button onClick={()=>setTheme("black")}>切换主题</button>
      {/* <Uncle /> */}
       {/* <parent>
         <child>

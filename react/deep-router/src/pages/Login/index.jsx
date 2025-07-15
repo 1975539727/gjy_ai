@@ -7,7 +7,7 @@ import {
 } from'react-router-dom'
 const login=()=>{
     const location=useLocation();// 
-    // console.log(location.state.form);
+    console.log(location.state.from,'////');
     const navigate =useNavigate();// navigate 能力 
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
@@ -17,7 +17,7 @@ const login=()=>{
         if(username==='admin'&&password==='123456'){
             localStorage.setItem('isLogin',true)
             alert('登录成功')
-            navigate(location?.state?.form|| '/');
+            navigate(location?.state?.from|| '/');
         }else{
             alert('用户名或密码错误')
         }

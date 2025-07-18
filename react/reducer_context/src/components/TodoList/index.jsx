@@ -16,7 +16,7 @@ const TodoList = () => {
                           style={{textDecoration:todo.done ? 'line-through':'none'}}
                         >
                         {todo.text}
-                        {localStorage.getItem('text')}
+                        {/* {localStorage.getItem('text')} */}
                         </span>
                         <button onClick={()=>removeTodo(todo.id)}>remove</button>
                     </li>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr=[1,2,3]
+        // 可迭代对象 比计数循环好理解,可读性更好 
+        // for(let item of arr){
+        //     console.log(item)
+        // }
+        // for of item 还有拿到index ? 
+        for(const [index,item] of arr.entries()){
+            console.log(index,item)
+        }
+        console.log(arr.entries())
+    </script>
+</body>
+</html>
+

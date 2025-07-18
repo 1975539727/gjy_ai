@@ -18,6 +18,9 @@ import {
 } from './api/repos'// 上面是导入，所以要空一行  细节
 import Loading from './components/Loading'
 const RepoList=lazy(()=>import('./pages/RepoList'))
+const RepoDetail=lazy(()=>import('./pages/RepoDetail'))
+const Home=lazy(()=>import('./pages/Home'))
+const NotFound=lazy(()=>import('./pages/NotFound'))
 function App() {
 
   // useEffect(()=>{
@@ -41,7 +44,9 @@ function App() {
   return (
     <Suspense fallback={<Loading />}>
      <Routes>
-     <Route path="*"  element={<Navigate to="/users/1975539727/repos" />} />
+     <Route path="/"  element={<Home/> }/>
+      <Route path="*"  element={<NotFound />} />
+      <Route path="/users/:id/repos/:repoId"  element={<RepoDetail />} />
       <Route path="/users/:id/repos"  element={<RepoList />} />
      </Routes>
     </Suspense>

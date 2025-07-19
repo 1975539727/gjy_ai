@@ -7,7 +7,14 @@ import todoReducer from '../reducers/todoReducer'
 // ` ` 模版字符串
 // 解构 []=[] {}={} 
 // 展开运算符, ... rest运算符   
-export function useTodos(initial=[]) {
+const initialTodos =[
+    {
+        id:1,
+        text:'学习React',
+        done:false
+    }
+]
+export function useTodos(initial=initialTodos) {
     const [todos,dispatch] = useReducer(todoReducer,initial)
 
     const addTodo = text => dispatch({type: 'ADD_TODO',text})

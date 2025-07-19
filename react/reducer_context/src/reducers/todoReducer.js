@@ -1,4 +1,5 @@
-// 状态的正确
+// 状态的正确 
+// 纯函数 
 function todoReducer(state,action){
     switch(action.type){
         case 'ADD_TODO':

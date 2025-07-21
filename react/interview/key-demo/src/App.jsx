@@ -43,6 +43,20 @@ function App() {
   //     ])
   //   },5000)
   // },[])
+  useEffect(()=>{
+    setTimeout(()=>{
+      setTodos(prev => prev.map(todo=>{
+        
+          return {
+           ...todo,
+            id:date.now(),
+            title:'标题四'
+          }
+        
+     
+      }))
+    },5000)
+  },[])
   return (
     <>
       <ul>

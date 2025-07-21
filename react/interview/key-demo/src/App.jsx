@@ -16,39 +16,39 @@ function App() {
       title:'标题三'
     }
   ])
-  useEffect(()=>{
-    setTimeout(()=>{
-      // setTodos(prev => prev.map(todo=>{
-      //   if(todo.id===1){
-      //     return {
-      //       ...todo,
-      //       title:'标题gai一1'
-      //     }
-      //   }
-      //   return todo
-      // }))
-      // setTodos(prev => [
-      //   ...prev,
-      //   {
-      //     id: 4,
-      //     title:'标题四'
-      //   }
-      // ])
-      setTodos(prev =>[
-      {
-        id: 4,
-        title:'标题四'
-      },
-      ...prev
-      ])
-    },5000)
-  },[])
+  // useEffect(()=>{
+  //   setTimeout(()=>{
+  //     // setTodos(prev => prev.map(todo=>{
+  //     //   if(todo.id===1){
+  //     //     return {
+  //     //       ...todo,
+  //     //       title:'标题gai一1'
+  //     //     }
+  //     //   }
+  //     //   return todo
+  //     // }))
+  //     // setTodos(prev => [
+  //     //   ...prev,
+  //     //   {
+  //     //     id: 4,
+  //     //     title:'标题四'
+  //     //   }
+  //     // ])
+  //     setTodos(prev =>[
+  //     {
+  //       id: 4,
+  //       title:'标题四'
+  //     },
+  //     ...prev
+  //     ])
+  //   },5000)
+  // },[])
   return (
     <>
       <ul>
         {
           todos.map((todo)=>(
-            <li key={todo.id}>
+            <li >
               {todo.title}
             </li>
           ))

@@ -103,6 +103,9 @@ Readme.md 很重要 方便面试官
 - UI组件库
    - react-vant 第三方组件库 70%的组件已经有了,不用写
    - 选择一个适合业务的UI组件库 或者公司内部的组件库
+- chatbot 模块
+   - llm 模块 chat 封装
+   - 迭代chat,支持任意模型
 - 配置路由及懒加载
   - 懒加载
   - 路由守卫
@@ -116,8 +119,34 @@ Readme.md 很重要 方便面试官
       - react-vant  + @react-vant/icons
       - value + onChange 响应式 
       - 直接点击链接分享 active 的设置 
+## 项目亮点和难点
+- 前端智能
+   - chat 函数
+   - 对各家模型感兴趣 ,升级为kimiChat... 灵活
+      性能,能力,性价比
+      随意切换大模型,通过参数抽象
+- 原子css
+    - App.css 里面添加通用样式
+    - 各自模块里module.css 不影响别的组件
+    - lib-flexible 移动端适配
+    - postcss pxtorem 插件 快速还原设计稿
+    - 原子类的css
+      一个元素按功能逻辑拆分成多个类,和原子一样 
+      元素的样式就可以有这些原子类
+      样式复用的更好,以后几乎不用写样式
+- 自定义hooks
+    - useTitle
+    一定要设置
 - es6 特性使用
   tabbar  的高亮
   - arr.findIndex()
   - str.startsWith()
   - promise 
+
+- 项目迭代 
+  - 功能由浅入深
+  - chatbot  deepseek  简单chat 
+  - deepseek-r1  推理模型 
+  - 流式输出
+  - 上下文  LRU 
+  - coze 工作流接口调用

@@ -34,31 +34,39 @@ const MainLayout =()=>{
     useEffect(()=>{
         console.log(location.pathname,'///');
         const index=tabs.findIndex(
-            tab => location.pathname,startWith(tab.path)
+            tab => location.pathname.startsWith(tab.path)
         )
         setActive(index)
-
     },[location.pathname])
     return(
-     <>
-     <Outlet/>
-     {/* tabbar */}
-     <Tabbar value={active} onChange={
-        (key) => { 
-            setActive(key) 
-            navigate(tabs[key].path)
-        }
-     } >
-        {tabs.map((tab, index) => (
-                    <Tabbar.Item 
-                        key={index} 
-                        icon={tab.icon}
-                    > 
-                    {tab.title}
-                    </Tabbar.Item>
-                ))}
-    </Tabbar>
-     </>
+     <div  
+     className='flex flex-col h-screen'
+     style={{paddingBottom:'50px'}}
+     >
+        <div className='flex-1' >
+            <Outlet/>
+        </div>
+        
+        {/* tabbar */}
+        <Tabbar value={active} onChange={
+            (key) => { 
+                setActive(key) 
+                navigate(tabs[key].path)
+            }
+        } >
+            {tabs.map((tab, index) => (
+                        <Tabbar.Item 
+                            key={index} 
+                            icon={tab.icon}
+                            title={tab.title}
+                            // 确保当前项索引与 active 状态匹配
+                            active={index === active}
+                        > 
+                        {tab.title}
+                        </Tabbar.Item>
+                    ))}
+        </Tabbar>
+     </div>
     )
 }
 export default MainLayout;

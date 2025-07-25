@@ -5,28 +5,94 @@ import {
 import {
     Button,
     Input,
-    Loading
+    Loading,
+    Toast
 } from 'react-vant'
-
+import {
+    ChatO,
+    UserO
+} from '@react-vant/icons'
 import useTitle from '@/hooks/useTitle'
 import {
-    kimiChat
+    chat
 } from '@/llm'
 import styles from './trip.module.css';
 
 const Trip = () => {
     useTitle('旅游智能客服')
+   
     const [text, setText] = useState("");
     const [isSending,setIsSending]= useState(false);
-    const handleChat = () => {
-        if(text.trim()==="") return ;
+    // 数据静态界面
+    // 静态界面
+    const [messages,setMessages] =useState([
+        {
+           id:2,
+           content:'hello~',
+           role:'user'
+        },
+        {
+            id:1,
+            content:'hello, 我是你的助理~',
+            role:'assistant'
+        },
+       
+    ]);
+    const handleChat = async () => {
+        if(text.trim()==="") {
+            Toast.info({
+                message:"内容不能为空"
+            })
+            return ;
+        }
         setIsSending(true);
-        
+        setText("")
+        setMessages((prev) =>{
+            return [
+                ...prev,
+                {
+                    role:'user',
+                    content:text
+                }
+            ]
+        })
+
+        const newMessage =await chat([
+            {
+                role:'user',
+                content:text
+            }
+        ])
+        setMessages((prev)=>{
+            return [
+                ...prev,
+                newMessage.data
+            ]
+        })
+        setIsSending(false)
     }
     return (
         <div className="flex flex-col h-all">
             <div className={`flex-1 ${styles.chatArea}`}>
-
+                 {
+                    messages.map((msg,index)=>(
+                        <div 
+                            key={index}
+                            className={
+                                msg.role === 'user'?
+                                styles.messageRight:styles.messageLeft
+                            }
+                        >
+                            {
+                                msg.role === 'assistant'?
+                                <ChatO /> :<UserO />
+                            }
+                            {
+                                msg.content
+                            }
+                        </div>
+                    ))
+                 }
             </div>
             <div className={`flex ${styles.inputArea}`}>
                 <Input
@@ -35,7 +101,13 @@ const Trip = () => {
                     placeholder="请输入消息"
                     className={`flex-1 ${styles.input}`}
                 />
-                <Button disabled={isSending}  type="primary" onClick={handleChat} >发送</Button>
+                <Button 
+                disabled={isSending}  
+                type="primary" 
+                onClick={handleChat} 
+                style={{ borderRadius: '10px' }}>
+                    发送
+                </Button>
             </div>
             {isSending && <div className="flexd-loading"><Loading  type="ball"/ ></div>}
         </div>

@@ -9,9 +9,20 @@
     <input type="text" id="inputA">
     <script>
         let inputA = document.getElementById('inputA')
-        inputA.addEventListener('keyup',function(event){
+        function debounce(fn,delay){
+            let timer = null;
+            return function(...args) {
+                if (timer != null) {
+                    clearTimeout(timer);
+                }
+                timer = setTimeout(() => {
+                    fn.apply(this, args);
+                }, delay);
+            };
+        }
+        inputA.addEventListener('keyup',debounce(function(event){
             console.log(event.target.value)
-        })
+        },1000))
     </script>
 </body>
 </html>

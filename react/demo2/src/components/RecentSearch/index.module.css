@@ -1,0 +1,9 @@
+.recentContainer { 
+    display: flex; 
+    gap: 10px; /* 设置按钮之间的间距为 10px，可按需调整 */ 
+    flex-wrap: wrap; /* 允许按钮换行 */ 
+  }
+.recent{
+  padding: 10px
+}
+  

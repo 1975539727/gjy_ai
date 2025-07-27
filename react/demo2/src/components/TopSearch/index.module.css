@@ -1,0 +1,7 @@
+.topSearchContainer {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white; /* 根据实际情况调整背景色 */
+
+}

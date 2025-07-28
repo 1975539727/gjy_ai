@@ -119,6 +119,12 @@ Readme.md 很重要 方便面试官
       - react-vant  + @react-vant/icons
       - value + onChange 响应式 
       - 直接点击链接分享 active 的设置 
+   - search 
+     -  防抖
+     - api
+       GoogleSuggest
+     - localStorage  
+
 ## 项目亮点和难点
 - 前端智能
    - chat 函数
@@ -156,3 +162,10 @@ Readme.md 很重要 方便面试官
   - 流式输出
   - 上下文  LRU 
   - coze 工作流接口调用
+
+## 通用项目组件
+- Loading 
+    - 居中方案
+       position:fixed +tlrb0 +margin:auto
+    - React.memo  无状态的组件,不重新渲染
+    - animation 

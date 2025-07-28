@@ -8,7 +8,7 @@ import {
   Route,
   Navigate
 } from'react-router-dom'
-import { Flex, Loading } from 'react-vant';
+import { Flex} from 'react-vant';
 const Home = lazy(() => import('@/pages/Home'));
 const Search = lazy(() => import('@/pages/Search'));
 // const Login = lazy(() => import('@/pages/Login'));
@@ -18,17 +18,14 @@ const Trip = lazy(() => import('@/pages/Trip'));
 import './App.css'
 import MainLayout from './components/MainLayout'
 import BlackLayout from './components/BlackLayout'
+import Loading from '@/components/Loading';
 import Account from './pages/Account';
 
 function App() {
   return (
     <>
-      <Suspense fallback={  
-      <Flex justify="center" align="center">
-          <Flex.Item >
-             <Loading type="ball" />
-          </Flex.Item>
-      </Flex>}>
+      
+      <Suspense fallback={ <Loading /> }>
         {/* 带有tabbar的Layout */}
         <Routes >
           <Route element={<MainLayout />}>

@@ -74,7 +74,7 @@ const Detail = () => {
               {
                   detail.images.map((item, index) => (
                       <Swiper.Item key={index}>
-                          <Image lazyload src={item.url}/>
+                          <Image  src={item.url}/>
                       </Swiper.Item>
                   ))
               }

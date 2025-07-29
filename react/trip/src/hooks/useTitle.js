@@ -3,11 +3,8 @@ import {
 } from 'react';
 
 function useTitle(title){
-    useEffect(()=>{
+    // useEffect(()=>{
         document.title = title;
-        return ()=>{
-            document.title = 'useTitle';
-        }
-    },[])
+    // },[])
 }
 export default useTitle;

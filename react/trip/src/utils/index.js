@@ -7,4 +7,4 @@ export function debounce(fun, delay) {
             fun.call(that, _args)
         }, delay)
     }
-  }
+}

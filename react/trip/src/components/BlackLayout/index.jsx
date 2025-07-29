@@ -5,7 +5,7 @@ const BlackLayout =()=>{
     return(
      <>
      <Outlet/>
-     BlackLayout
+ 
      </>
     )
 }

@@ -21,11 +21,10 @@ import MainLayout from './components/MainLayout'
 import BlackLayout from './components/BlackLayout'
 import Loading from '@/components/Loading';
 import Account from './pages/Account';
-
+import Toast from './components/Toast';
 function App() {
   return (
     <>
-      
       <Suspense fallback={ <Loading /> }>
         {/* 带有tabbar的Layout */}
         <Routes >
@@ -45,6 +44,7 @@ function App() {
         </Route>
         </Routes>
       </Suspense>
+      <Toast />
     </>
   )
 }

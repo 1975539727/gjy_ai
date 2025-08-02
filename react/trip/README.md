@@ -157,15 +157,42 @@ Readme.md 很重要 方便面试官
       随意切换大模型,通过参数抽象
    - 文生图
      - 优化prompt 设计
-- 原子css
-    - App.css 里面添加通用样式
-    - 各自模块里module.css 不影响别的组件
-    - lib-flexible 移动端适配
-    - postcss pxtorem 插件 快速还原设计稿
-    - 原子类的css
-      一个元素按功能逻辑拆分成多个类,和原子一样 
-      元素的样式就可以有这些原子类
-      样式复用的更好,以后几乎不用写样式
+   - 原子css
+      - App.css 里面添加通用样式
+      - 各自模块里module.css 不影响别的组件
+      - lib-flexible 移动端适配
+      - postcss pxtorem 插件 快速还原设计稿
+      - 原子类的css
+         一个元素按功能逻辑拆分成多个类,和原子一样 
+         元素的样式就可以有这些原子类
+         样式复用的更好,以后几乎不用写样式
+   - 智能生成图片
+     - 产品 
+     - 帮助冰球社区的宠物运动员 智能出图
+     社交属性 
+     - 商业价值
+     技术服务
+     coze 工作流 智能编排AI 流程 编程一种
+     - Api 调用 
+   - 设计工作流
+     - 创建工作流 api_pic
+        上传宠物照片,生成宠物冰球运动员照片
+     - 代码节点 
+        参数校验和逻辑功能,返回运行的结果 
+     - 图片生成流程
+        - 图片理解插件  计算机视觉 
+        - 大模型  特征提取
+        prompt 
+        - 
+   - workflow_id 7533135163934523435
+   - token 
+   - coze 图片要上传到coze中 
+    pat_awwn9Z0XATYJse3TSdkqcc3dPlSQrcb91l2Nf0s72txSSHUnlAOzXdFYsrc14fP3
+    upload + token + new FormData
+    append(file)
+    拿到file_id
+   - workfolwUrl + workflow_id + token
+
 - 用户体验优化
    - 搜索建议，防抖 +useMemo  性能优化
    - 组件粒度优化
@@ -174,6 +201,7 @@ Readme.md 很重要 方便面试官
    - 热门推荐  + 相关商品 (产品)
    - SPA
    - 骨架屏 不用让用户等待了
+   - 文件上传的perview html5 FileReader 
 ## 项目中遇到过什么问题，怎么解决的
 - chat messages 遇到message 覆盖问题
 - 闭包陷阱问题

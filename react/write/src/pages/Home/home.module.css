@@ -1,0 +1,9 @@
+.texttabs {
+    width: 100%; /* 确保 tabs 占满容器 */
+    margin-top: 0; /* 移除顶部外边距，紧贴 Header */ 
+}
+.van-tab { 
+    flex: 1; /* 让三个标签均匀分配宽度 */ 
+    text-align: center; /* 文字居中 */ 
+    white-space: nowrap; /* 文字不换行 */ 
+} 

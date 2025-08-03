@@ -9,16 +9,21 @@ const items = [
 ]
 const Home = () => {
   return (
-    <>
+    <div className={styles.container}>
       <Header />
       <Logo />
-      <Tabs defaultActive={2} className={styles.texttabs} ellipsis={false}>
+      <Tabs 
+        defaultActive={2} 
+        className={styles.texttabs} 
+        ellipsis={false} 
+        lineWidth='0'
+      >
         {items.map(item => (
           <Tabs.TabPane key={item.id} title={item.title} >
           </Tabs.TabPane>
         ))}
       </Tabs>
-     </>
+     </div>
   )
 }
 export default Home;

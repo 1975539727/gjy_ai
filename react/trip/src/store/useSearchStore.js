@@ -2,11 +2,11 @@
 import {
     create
 } from 'zustand'
-  import {
+import {
     getSuggestList,
     getHotList
-  } from '@/api/search'
-  
+} from '@/api/search'
+
 const useSearchStore = create((set, get) => {
     // get  读操作
     const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || []

@@ -1,9 +1,13 @@
-.texttabs {
-    width: 100%; /* 确保 tabs 占满容器 */
-    margin-top: 0; /* 移除顶部外边距，紧贴 Header */ 
+.container {
+    display: flex;
+    flex-direction: column;
 }
-.van-tab { 
-    flex: 1; /* 让三个标签均匀分配宽度 */ 
-    text-align: center; /* 文字居中 */ 
-    white-space: nowrap; /* 文字不换行 */ 
-} 
+.texttabs {
+    position: fixed; 
+    width: 100%;
+    /* 确保与Header无间距 */
+    margin-top: 0;
+    /* 移除可能的默认边框和内边距 */
+    border: none;
+    padding: 190px 0;
+}

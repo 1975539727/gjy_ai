@@ -72,7 +72,8 @@ const Trip = () => {
         setIsSending(false)
     }
     return (
-        <div className="flex flex-col h-all">
+        <>
+        <div className="flex flex-col " style={{height: '100vh'}}>
             <div className={`flex-1 ${styles.chatArea}`}>
                  {
                     messages.map((msg,index)=>(
@@ -94,23 +95,25 @@ const Trip = () => {
                     ))
                  }
             </div>
-            <div className={`flex ${styles.inputArea}`}>
-                <Input
-                    value={text}
-                    onChange={(e) => setText(e)}
-                    placeholder="请输入消息"
-                    className={`flex-1 ${styles.input}`}
-                />
-                <Button 
-                disabled={isSending}  
-                type="primary" 
-                onClick={handleChat} 
-                style={{ borderRadius: '10px' }}>
-                    发送
-                </Button>
-            </div>
+            
             {isSending && <div className="flexd-loading"><Loading  type="ball"/ ></div>}
         </div>
+        <div className={`flex ${styles.inputArea}`}>
+            <Input
+                value={text}
+                onChange={(e) => setText(e)}
+                placeholder="请输入消息"
+                className={`flex-1 ${styles.input}`}
+            />
+            <Button 
+            disabled={isSending}  
+            type="primary" 
+            onClick={handleChat} 
+            style={{ borderRadius: '10px' }}>
+                发送
+            </Button>
+        </div>
+    </>
     )
 }
 

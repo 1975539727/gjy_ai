@@ -1,0 +1,43 @@
+.chatArea {
+    overflow-y: auto;
+    height: 80vh;
+    padding: 24px;
+    background-color: #f7f8fa;
+}
+.inputArea {
+    width: 95%;
+    padding: 16px;
+    border-top:1px solid #ddd;
+    background: white;
+    position: fixed; /* 固定定位 */;
+    bottom: 3em; /* 底部对齐 */;
+    display: flex; /* 使用 flex 布局让子元素在同一行 */ 
+}
+.input {
+    flex: 1; /*输入框占据剩余空间 */
+    margin-right: 8px;
+}
+.messageRight ,.messageLeft {
+    max-width: 70%;
+    padding: 8px 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.messageLeft {
+    background-color: #fff;
+}
+.messageRight {
+   background-color: #4fc08d;
+   color: white;
+   margin-left: 30%;
+}
+
+.flexd-loading { 
+    position: fixed; /* 相对于视口固定 */
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); /* 基于自身宽高居中 */
+    z-index: 9999; /* 确保在最上层 */
+    height: auto; /* 移除固定高度，由内容决定 */
+  }

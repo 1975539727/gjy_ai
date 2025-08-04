@@ -1,5 +1,6 @@
 import Logo from "@/components/Logo";
 import Header from "@/components/Header";
+import SearchBox from "@/components/SearchBox";
 import { Tabs } from 'react-vant'
 import styles from './home.module.css'
 const items = [
@@ -12,6 +13,7 @@ const Home = () => {
     <div className={styles.container}>
       <Header />
       <Logo />
+      <SearchBox />
       <Tabs 
         defaultActive={2} 
         className={styles.texttabs} 

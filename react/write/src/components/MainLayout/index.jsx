@@ -28,8 +28,8 @@ const MainLayout =()=>{
     },[location.pathname])
     return(
      <div  
-     className='flex flex-col h-screen'
-     style={{paddingBottom:'50px'}}
+        className='flex flex-col h-screen'
+        style={{paddingBottom:'50px'}}
      >
         <div className='flex-1' >
             <Outlet/>
@@ -40,8 +40,9 @@ const MainLayout =()=>{
             (key) => { 
                 setActive(key) 
                 navigate(tabs[key].path)
-            }
-        } >
+            }} 
+            style={{ position: 'fixed', bottom: 0, width: '100%', zIndex: 1000 }}
+            >
             {tabs.map((tab, index) => (
                         <Tabbar.Item 
                             key={index} 

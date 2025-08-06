@@ -1,52 +1,141 @@
 .container {
-    background-color: #f5f5f5;
-    height: 100%;
-
-}
-.user {
-     background-color: #fff;
-     padding: 20px 16px;
-     display: flex;
-     align-items: center;
-}
-.nickname {
-    font-size: 36px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+  }
+  
+  /* 用户信息卡片 */
+  .user {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .user:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* 头像点击效果 */
+  .user img {
+    transition: all 0.3s ease;
+  }
+  
+  .user img:hover {
+    box-shadow: 0 0 0 4px #667eea;
+    opacity: 0.9;
+  }
+  
+  /* 文字信息 */
+  .nickname {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  
+  .level {
+    font-size: 1rem;
+    color: #07c160;
+    margin-top: 0.4rem;
     font-weight: 500;
-}
-.level {
-   font-size: 28px;
-   color: #999;
-   margin-top: 8px;
-}
-.slogan {
-   font-size: 24px;
-   color: #ccc;
-   margin-top: 8px;
-}
-/* 九宫格  grid行列同时布局*/
-.gridContainer {
+    background: #e8f5e8;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    display: inline-block;
+  }
+  
+  .slogan {
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+  
+  /* 卡片组 */
+  .cell-group {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    background: white;
+  }
+  
+  /* 快捷图标网格 */
+  .gridContainer {
     display: grid;
-    /* 1fr 等比例 */
-    grid-template-columns: repeat(3,1fr); 
-    padding: 40px;
-    margin: 16px 32px;
-    background-color: #fff;
-}
-.gridItem {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1.5rem;
+    margin: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .gridItem {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 24px;
-    border: 1px solid #eee;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    cursor:pointer;
-}
-.gridItem  .icon {
-    font-size: 48px;
-    margin-bottom: 16px;
-}
-.gridItem .text {
-    font-size: 28px;
+    padding: 1.2rem 0.8rem;
+    border-radius: 12px;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .gridItem:hover {
+    background: #f0f4ff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .gridItem .icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    color: #667eea;
+  }
+  
+  .gridItem .text {
+    font-size: 1rem;
     color: #333;
-}
+    font-weight: 500;
+  }
+  
+  /* 响应式：小屏下两列 */
+  @media (max-width: 480px) {
+    .gridContainer {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 1rem;
+      margin: 1rem;
+    }
+  
+    .user {
+      padding: 1.2rem;
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .ml4 {
+      margin-left: 0 !important;
+      margin-top: 0.8rem;
+    }
+  }
+  
+  /* 更大屏适配 */
+  @media (min-width: 768px) {
+    .container {
+      padding: 2rem;
+    }
+  
+    .gridContainer {
+      margin: 2rem;
+      padding: 2rem;
+    }
+  }

@@ -14,6 +14,10 @@ const Home = lazy(() => import('./pages/Home'));
 const Profile = lazy(() => import('./pages/Profile'));
 import Loading from './components/Loading';
 import MainLayout from './components/MainLayout';
+
+import Recommendsection from "@/pages/Recommendsection";
+import Categorylist from "@/pages/Categorylist";
+import Hotlist from "@/pages/Hotlist";
 function App() {
 
   return (
@@ -21,8 +25,12 @@ function App() {
       <Suspense  fallback={<Loading />}>
         <Routes>
           <Route element={<MainLayout />}>
-            <Route path='/' element={<Navigate to="/home" />} />
-            <Route path='/home' element={<Home />} />
+            <Route path='/*' element={<Navigate to="/home" />} />
+            <Route path='/home' element={<Home />} >
+              <Route path="recommend" element={<Recommendsection />} />
+              <Route path="category" element={<Categorylist />} />
+              <Route path="hot" element={<Hotlist />} />
+            </Route>
             <Route path="/aiwrite" element={<AIwrite />} />
             <Route path="/profile" element={<Profile />} />
           </Route>

@@ -6,7 +6,7 @@ import {
 } from "../../store/user"
 import {
   useNavigate,
-} from'react-router-dom'
+} from 'react-router-dom'
 
 const Login = () => {
   const usernameRef = useRef()
@@ -53,7 +53,6 @@ const Login = () => {
           <button type="submit">Login</button>
         </div>
       </form>
-      
     </>
   )
 }

@@ -1,43 +1,151 @@
-.chatArea {
-    overflow-y: auto;
-    height: 80vh;
-    padding: 24px;
-    background-color: #f7f8fa;
-}
-.inputArea {
-    width: 95%;
-    padding: 16px;
-    border-top:1px solid #ddd;
-    background: white;
-    position: fixed; /* 固定定位 */;
-    bottom: 3em; /* 底部对齐 */;
-    display: flex; /* 使用 flex 布局让子元素在同一行 */ 
-}
-.input {
-    flex: 1; /*输入框占据剩余空间 */
-    margin-right: 8px;
-}
-.messageRight ,.messageLeft {
-    max-width: 70%;
-    padding: 8px 12px;
-    margin: 12px 0;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-.messageLeft {
-    background-color: #fff;
-}
-.messageRight {
-   background-color: #4fc08d;
-   color: white;
-   margin-left: 30%;
-}
+/* aiwrite.module.css */
 
-.flexd-loading { 
-    position: fixed; /* 相对于视口固定 */
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); /* 基于自身宽高居中 */
-    z-index: 9999; /* 确保在最上层 */
-    height: auto; /* 移除固定高度，由内容决定 */
+.chatContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f5f7fa;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  .chatArea {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* 消息间距更舒适 */
+    scrollbar-width: thin;
+    scrollbar-color: #b3d4ff #f5f7fa;
+  }
+  
+  .chatArea::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .chatArea::-webkit-scrollbar-track {
+    background: #f5f7fa;
+  }
+  
+  .chatArea::-webkit-scrollbar-thumb {
+    background-color: #b3d4ff;
+    border-radius: 3px;
+  }
+  
+  .message {
+    display: flex;
+    align-items: flex-start;
+    max-width: 80%;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .messageLeft {
+    align-self: flex-start;
+    background-color: #ffffff;
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    padding: 12px 16px;
+    border-bottom-left-radius: 4px;
+  }
+  
+  .messageRight {
+    align-self: flex-end;
+    background-color: #007aff; /* Apple 风格蓝，更专业 */
+    color: white;
+    border-radius: 12px;
+    padding: 12px 16px;
+    box-shadow: 0 2px 6px rgba(0, 122, 255, 0.2);
+    border-bottom-right-radius: 4px;
+  }
+  
+  .message .icon {
+    margin-right: 10px;
+    color: #8e8e93;
+    flex-shrink: 0;
+  }
+  
+  .messageRight .icon {
+    margin-left: 10px;
+    margin-right: 0;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .messageContent {
+    word-wrap: break-word;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  
+  .inputArea {
+    display: flex;
+    padding: 12px 16px;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    /* 直接增加底部padding */
+    padding-bottom: 3rem; /* 根据实际设备底部安全区高度调整 */
+  }
+  
+  .input {
+    flex: 1;
+    margin-right: 12px;
+  }
+  
+  .inputArea .rv-input {
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+  
+  .inputArea .rv-input:focus {
+    border-color: #007aff;
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.1);
+  }
+  
+  .sendBtn {
+    width: 72px;
+    height: 44px;
+    background: #007aff;
+    color: white;
+    border: none;
+    border-radius: 18px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+  }
+  
+  .sendBtn:hover {
+    background: #005eeb;
+  }
+  
+  .sendBtn:disabled {
+    background: #a0cfff;
+    cursor: not-allowed;
+  }
+  
+  .flexdloading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 16px 20px;
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }

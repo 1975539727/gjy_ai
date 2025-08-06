@@ -1,121 +1,113 @@
-import {
-    useEffect,
-    useState
-} from 'react';
-import {
-    Button,
-    Input,
-    Loading,
-    Toast
-} from 'react-vant'
-import {
-    ChatO,
-    UserO
-} from '@react-vant/icons'
-
-import {
-    write
-} from '@/llm'
+import { useEffect, useState } from 'react';
+import { Button, Input, Loading, Toast } from 'react-vant';
+import { ChatO, UserO } from '@react-vant/icons';
+import { write } from '@/llm';
 import styles from './aiwrite.module.css';
-const AIwriter =()=>{
-    const [text, setText] = useState("");
-    const [isSending,setIsSending]= useState(false);
-    // 数据静态界面
-    // 静态界面
-    const [messages,setMessages] =useState([
-        {
-           id:2,
-           content:'hello~',
-           role:'user'
-        },
-        {
-            id:1,
-            content:'hello, 我是你的助理~',
-            role:'assistant'
-        },
-       
-    ]);
-    const handleWrite = async () => {
-        if(text.trim()==="") {
-            Toast.info({
-                message:"内容不能为空"
-            })
-            return ;
-        }
-        setIsSending(true);
-        setText("")
-        setMessages((prev) =>{
-            return [
-                ...prev,
-                {
-                    role:'user',
-                    content:text
-                }
-            ]
-        })
 
-        const newMessage =await write([
-            {
-                role:'user',
-                content:text
-            }
-        ])
-        setMessages((prev)=>{
-            return [
-                ...prev,
-                newMessage.data
-            ]
-        })
-        setIsSending(false)
+const AIWriter = () => {
+  const [text, setText] = useState('');
+  const [isSending, setIsSending] = useState(false);
+  const [messages, setMessages] = useState([
+    {
+      id: 1,
+      content: 'Hello, 我是你的智能写作小助手，有什么我可以帮你的吗？',
+      role: 'assistant',
+    },
+  ]);
+
+  const handleWrite = async () => {
+    const inputText = text.trim();
+    if (!inputText) {
+      Toast.info('请输入内容哦~');
+      return;
     }
-    return(
-    <>
-        <div className="flex flex-col h-all">
-            <div className={`flex-1 ${styles.chatArea}`}>
-                 {
-                    messages.map((msg,index)=>(
-                        <div 
-                            key={index}
-                            className={
-                                msg.role === 'user'?
-                                styles.messageRight:styles.messageLeft
-                            }
-                        >
-                            {
-                                msg.role === 'assistant'?
-                                <ChatO /> :<UserO />
-                            }
-                            {
-                                msg.content
-                            }
-                        </div>
-                    ))
-                 }
-            </div>
-            
-        
+
+    setIsSending(true);
+    setText('');
+
+    // 添加用户消息
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: 'user',
+        content: inputText,
+      },
+    ]);
+
+    try {
+      const response = await write([
+        {
+          role: 'user',
+          content: inputText,
+        },
+      ]);
+
+      // 假设返回格式为 { data: { role, content } }
+      setMessages((prev) => [...prev, response.data]);
+    } catch (err) {
+      Toast.fail('发送失败，请稍后重试');
+    } finally {
+      setIsSending(false);
+    }
+  };
+
+  return (
+    <div className={styles.chatContainer}>
+      {/* 聊天区域 */}
+      <div className={styles.chatArea}>
+        {messages.map((msg, index) => (
+          <div key={index} className={`${styles.message} ${msg.role === 'user' ? styles.messageRight : styles.messageLeft}`}>
+            {msg.role === 'assistant' && (
+              <div className={styles.icon}>
+                <ChatO fontSize={18} />
+              </div>
+            )}
+            <div className={styles.messageContent}>{msg.content}</div>
+            {msg.role === 'user' && (
+              <div className={styles.icon}>
+                <UserO fontSize={18} />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* 输入区域 */}
+      <div className={styles.inputArea}>
+        <Input
+          value={text}
+          onChange={setText}
+          placeholder="输入消息..."
+          className={styles.input}
+          type="textarea"
+          rows={1}
+          autoSize={{ minRows: 1, maxRows: 4 }}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              handleWrite();
+            }
+          }}
+        />
+        <Button
+          type="primary"
+          className={styles.sendBtn}
+          disabled={isSending || !text.trim()}
+          onClick={handleWrite}
+        >
+          {isSending ? '发送中...' : '发送'}
+        </Button>
+      </div>
+
+      {/* 加载中提示 */}
+      {isSending && (
+        <div className={styles.flexdloading}>
+          <Loading type="spinner" color="white" />
+          <span>AI 正在思考中...</span>
         </div>
-        <div className={`flex ${styles.inputArea}`}>
-            <Input
-                value={text}
-                onChange={(e) => setText(e)}
-                placeholder="请输入消息"
-                className={`flex-1 ${styles.input}`}
-                type="textarea"
-                rows={4}  // 设置默认显示行数
-                autoSize={{ minRows: 1, maxRows: 5 }}  // 自动调整大小
-            />
-            <Button 
-            disabled={isSending}   
-            type="primary" 
-            onClick={handleWrite} 
-            style={{ borderRadius: '10px' }}>
-                发送
-            </Button>
-       </div>
-       {isSending && <div className={styles['flexd-loading']}><Loading type="ball"/></div>}
-    </>
-    )
-    
-}
-export default AIwriter;
+      )}
+    </div>
+  );
+};
+
+export default AIWriter;

@@ -39,11 +39,38 @@ export const write =async (
     }
 }
 
-export const generateAvater  =async (text)=>{
-    // 设计prompt
-    const prompt =`
-     你是一位漫画设计师,需要为用户设计头像,主打卡通风格。
-     用户的信息是${text}
-     要求有个性,有设计感。
-    `
- }
+export const getImageChat = async (prompt) => {
+    try {
+      const response = await fetch("/api/doubao/images/generations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_ARK_API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: "doubao-seedream-3-0-t2i-250415",
+          prompt,
+          response_format: "url",
+          size: "1024x1024",
+          guidance_scale: 2.5,
+          watermark: false,
+        }),
+      });
+      const data = await response.json();
+      return data.data[0].url;
+    } catch (err) {
+      console.error("生成图片失败:", err);
+      throw err;
+    }
+  }
+  
+  export const generateAvater = async (text) => {
+    const prompt = `
+          你是一位漫画设计师，需要为用户设计头像，主打治愈的风格。
+          用户的信息是：${text}
+          要求有个性，有设计感。
+      `;
+    const res = await getImageChat(prompt);
+    return res;
+  };
+  

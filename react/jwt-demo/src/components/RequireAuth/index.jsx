@@ -22,7 +22,6 @@ const RequireAuth =({children})=>{
     // }
     return (
         <>
-            
             {children}
         </>
     )

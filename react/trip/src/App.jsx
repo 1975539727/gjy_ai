@@ -15,7 +15,9 @@ const Discount = lazy(() => import('@/pages/Discount'));
 const Collection = lazy(() => import('@/pages/Collection'));
 const Trip = lazy(() => import('@/pages/Trip'));
 const Detail = lazy(() => import('@/pages/Detail'));
-const Coze = lazy(() => import('./pages/Coze/index.jsx'));
+const Coze = lazy(() => import('@/pages/Coze'));
+const Article = lazy(() => import('@/pages/Article'));
+const ArticleNew = lazy(() => import('@/pages/Article/ArticleNew'));
 import './App.css'
 import MainLayout from './components/MainLayout'
 import BlackLayout from './components/BlackLayout'
@@ -40,6 +42,9 @@ function App() {
         {/* 空的Layout */}
         <Route element={<BlackLayout />}>
           <Route path='/search' element={<Search />} />
+          <Route path="/article" element={<Article />} >
+            <Route path="new" element={<ArticleNew />} /> 
+          </Route>
           <Route path='/detail/:id' element={<Detail />} />
         </Route>
 

@@ -17,7 +17,9 @@ import {
 import styles from './profile.module.css'
 import { generateAvater } from '@/llm'
 import { useUserStore } from '@/store/user'
+import { useNavigate } from 'react-router-dom'
 const Profile = () => {
+    const navigate = useNavigate()
     const { user,isLogin } = useUserStore();
     const [userInfo, setUserInfo] = useState({
       nickname: '奶龙',
@@ -84,9 +86,8 @@ const Profile = () => {
       ) :(
         <>
          <div className={styles.user}>
-            <button className={styles.loginButton} onClick={() => window.location.href = '/login'}>
-              请登录
-            </button>
+          {/* 在按钮中 */}
+         <button onClick={() => navigate('login')}>请登录</button>
           </div>
         </>
       ) }
@@ -129,4 +130,4 @@ const Profile = () => {
     );
   };
   
-  export default Profile;
+export default Profile;

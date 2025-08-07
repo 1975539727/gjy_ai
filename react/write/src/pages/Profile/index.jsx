@@ -18,10 +18,8 @@ import {
 import styles from './profile.module.css'
 import { generateAvater } from '@/llm'
 import { useUserStore } from '@/store/user'
-import { useNavigate } from 'react-router-dom'
 import LoginPopup from '@/components/LoginPopup'
 const Profile = () => {
-  const navigate = useNavigate()
   const { user, isLogin, login } = useUserStore() 
   const [userInfo, setUserInfo] = useState({
     nickname: '奶龙',
@@ -109,6 +107,9 @@ const Profile = () => {
       <CellGroup inset className={styles.cellGroup} style={{ marginTop: '1rem' }}>
         <Cell title="设置" icon={<SettingO />} isLink />
       </CellGroup>
+      <CellGroup inset className={styles.cellGroup} style={{ marginTop: '1rem' }}>
+        <Cell title="退出登录" icon={<ServiceO />} isLink  />
+      </CellGroup>
 
       {/* 操作弹窗 */}
       <ActionSheet
@@ -122,7 +123,7 @@ const Profile = () => {
        <LoginPopup
         visible={showLoginPopup}
         onClose={() => setShowLoginPopup(false)}
-      />
+       />
 
       {/* 全局 loading */}
       {loading && (

@@ -8,6 +8,7 @@ import {
 export const useUserStore = create(set => ({
     user: null,// 用户信息
     isLogin: false, // 是否登录
+    
     login: async ({username ,password}) => {
         console.log(username, password)
         const res = await doLogin({username, password});

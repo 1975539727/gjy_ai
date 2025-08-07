@@ -3,7 +3,8 @@ import { Popup, Field, Button, Toast } from 'react-vant'
 import { Contact, Lock, Close } from '@react-vant/icons'
 import { useUserStore } from '@/store/user'
 
-const LoginPopup = ({ visible, onClose }) => {
+const LoginPopup = (props) => {
+  const { visible, onClose } =props
   const { login } = useUserStore() 
   const [form, setForm] = useState({
     username: '',
@@ -23,7 +24,9 @@ const LoginPopup = ({ visible, onClose }) => {
       console.log(username, password)
       await login({username, password}) // 调用全局状态登录
       Toast.success('登录成功')
-      onClose?.() // 登录成功后关闭弹窗
+
+      onClose() // 登录成功后关闭弹窗
+      console.log(visible)
     } catch (err) {
       Toast.fail(err.message || '登录失败')
     } finally {

@@ -57,3 +57,15 @@
     - 返回JSON 
    JSON 前端需要后端提供的数据格式 
    Padding 
+
+- JSONP 利用了 script 可以跨域访问 
+   - 前端使用script  src=跨域的资源请求地址 
+   - 需要后端配合,返回的JSON 外面包含着函数 
+   - 页面上有个函数在等待执行 
+   - 复杂,能不能封装一下? 
+
+- 手写JSONP
+   - 获取动态数据,script 标签原来设计用来加载静态JS
+   - 后端配合解析 script url get 请求中的callback 参数值 
+    请求A,请求B .....
+   - 前端封装 

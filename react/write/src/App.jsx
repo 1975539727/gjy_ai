@@ -14,7 +14,6 @@ const Home = lazy(() => import('./pages/Home'));
 const Profile = lazy(() => import('./pages/Profile'));
 import Loading from './components/Loading';
 import MainLayout from './components/MainLayout';
-const Login = lazy(() => import('./pages/Login'));
 import Recommendsection from "@/pages/Recommendsection";
 import Categorylist from "@/pages/Categorylist";
 import Hotlist from "@/pages/Hotlist";
@@ -33,7 +32,6 @@ function App() {
             </Route>
             <Route path="/aiwrite" element={<AIwrite />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
       </Suspense>

@@ -8,12 +8,16 @@ import {
 export const useUserStore = create(set => ({
     user: null,// 用户信息
     isLogin: false, // 是否登录
-    login: async ({username="", password=""}) => {
+    login: async ({username ,password}) => {
+        console.log(username, password)
         const res = await doLogin({username, password});
         console.log(res)
         const {token, data:user} = res.data;
         console.log(token, user,'____')
         localStorage.setItem('token', token);
+        if(token!==undefined){
+            localStorage.setItem('isLogin',true)
+        }
         set({
             user,
             isLogin: true

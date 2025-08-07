@@ -8,5 +8,6 @@ export const getUser =()=>{
 // }
 
 export const doLogin =(data) =>{
+    console.log(data);
     return axios.post('/login',data)
 }

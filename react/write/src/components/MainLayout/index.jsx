@@ -7,11 +7,13 @@ import {
     HomeO,
     Fire,
     UserO,
+    Star
 } from '@react-vant/icons';
 import { Tabbar } from'react-vant';
 import { useState,useEffect } from'react';
 const tabs =[
     { icon: <HomeO />, title: '首页', path: '/home'},
+    { icon: <Star color='#FF4500' />, title: '推荐', path: "/recommend"},
     { icon:<Fire  color='#FF4500'/>,title:'AI小助手',path:'/aiwrite'},
     { icon: <UserO />, title: '我的', path: '/profile'}
 ]

@@ -9,7 +9,8 @@ const getImages=(page,pageSize=10)=>{
    }))
 }
 
-export default [{
+export default [
+    {
     url: '/api/search',
     method: 'get',
     timeout: 1000,

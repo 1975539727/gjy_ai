@@ -19,19 +19,17 @@ const LoginPopup = (props) => {
       return
     }
 
-    setSubmitting(true)
-    try {
-      console.log(username, password)
+     setSubmitting(true)
+     console.log(username, password)
+     console.log('onClose 函数已调用')
+      console.log('当前 visible 值:', visible)
       await login({username, password}) // 调用全局状态登录
       Toast.success('登录成功')
 
       onClose() // 登录成功后关闭弹窗
-      console.log(visible)
-    } catch (err) {
-      Toast.fail(err.message || '登录失败')
-    } finally {
+      console.log('onClose 函数已调用')
+      console.log('当前 visible 值:', visible)
       setSubmitting(false)
-    }
   }
 
   return (

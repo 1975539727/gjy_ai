@@ -7,7 +7,8 @@ import {
   CellGroup,
   ActionSheet,
   Loading,
-  Toast
+  Toast,
+  Dialog
 } from 'react-vant'
 import {
   ServiceO,
@@ -20,7 +21,7 @@ import { generateAvater } from '@/llm'
 import { useUserStore } from '@/store/user'
 import LoginPopup from '@/components/LoginPopup'
 const Profile = () => {
-  const { user, isLogin, login } = useUserStore() 
+  const { user, isLogin, login,logout } = useUserStore() 
   const [userInfo, setUserInfo] = useState({
     nickname: '奶龙',
     level: '5级',
@@ -31,8 +32,11 @@ const Profile = () => {
   const [showActionSheet, setShowActionSheet] = useState(false)
   const [loading, setLoading] = useState(false)
   const [showLoginPopup, setShowLoginPopup] = useState(false) // 控制登录弹窗显示
-
-
+  
+  const Logout = async () => {
+    await logout() // 调用全局状态登出
+    Toast.success('退出成功')
+  }
   const handleAction = async (e) => {
     setShowActionSheet(false)
     setLoading(true)
@@ -67,7 +71,7 @@ const Profile = () => {
 
   return (
     <div className={styles.container}>
-      {localStorage.getItem('isLogin') ? (
+      {localStorage.getItem('token')!=='1' ? (
         <>
           {/* 用户信息 */}
           <div className={styles.user}>
@@ -108,7 +112,19 @@ const Profile = () => {
         <Cell title="设置" icon={<SettingO />} isLink />
       </CellGroup>
       <CellGroup inset className={styles.cellGroup} style={{ marginTop: '1rem' }}>
-        <Cell title="退出登录" icon={<ServiceO />} isLink  />
+        <Cell 
+        title="退出登录"   
+        icon={<ServiceO />} 
+        isLink  
+        onClick={() =>
+          Dialog.confirm({
+            title: '标题',
+            message: '代码是写出来给人看的，附带能在机器上运行',
+            onCancel: () => console.log('cancel'),
+            onClick: Logout,
+          })
+        }
+        />
       </CellGroup>
 
       {/* 操作弹窗 */}

@@ -16,16 +16,13 @@ export const useUserStore = create(set => ({
         const {token, data:user} = res.data;
         console.log(token, user,'____')
         localStorage.setItem('token', token);
-        if(token!==undefined){
-            localStorage.setItem('isLogin',true)
-        }
         set({
             user,
             isLogin: true
         })
     },
     logout: () => {
-        localStorage.removeItem('token');
+        localStorage.setItem('token','1');
         set({
             user: null,
             isLogin: false

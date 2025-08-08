@@ -17,7 +17,6 @@
           200 
           Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS
           Access-Control-Allow-Headers
-          
           METHOD OPTIONS  
        - 真正的请求 
        

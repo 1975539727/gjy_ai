@@ -25,6 +25,7 @@ function App() {
         <Routes>
           <Route element={<MainLayout />}>
             <Route path='/*' element={<Navigate to="/home" />} />
+            <Route path="/recommend" element={<Recommendsection />} />
             <Route path='/home' element={<Home />} >
               <Route path="recommend" element={<Recommendsection />} />
               <Route path="category" element={<Categorylist />} />

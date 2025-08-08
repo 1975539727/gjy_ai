@@ -1,6 +1,20 @@
-const Recommendsection = () => {
-    return (
-        <div>Recommendsection</div>
+import {
+    useImageStore
+} from "@/store/image"
+import {
+   useEffect
+} from  'react'
+import Waterfall from "@/components/WaterFall";
+const Recommendsection=()=>{
+    const {images,loading,fetchMore}=useImageStore();
+    useEffect(()=>{
+       fetchMore()
+    },[])
+    return(
+        <>
+           <Waterfall images={images}  fetchMore={fetchMore}  loading={loading}/>
+        </>
+        
     )
 }
 export default Recommendsection;

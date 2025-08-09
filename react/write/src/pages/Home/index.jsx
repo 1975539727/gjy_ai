@@ -12,9 +12,8 @@ import {
 } from 'react-router-dom'
 
 const items = [
-  { id: 1, title: '推荐', path: 'recommend' }, // 去掉开头的斜杠，变成相对路径
-  { id: 2, title: '作文分类', path: 'category' },
-  { id: 3, title: '热门作文', path: 'hot' },
+  { id: 1, title: '作文分类', path: 'category' },
+  { id: 2, title: '热门作文', path: 'hot' },
 ];
 
 const NavBar = () => {

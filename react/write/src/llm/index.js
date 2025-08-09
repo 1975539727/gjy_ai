@@ -62,7 +62,7 @@ export const getImageChat = async (prompt) => {
       console.error("生成图片失败:", err);
       throw err;
     }
-  }
+}
   
   export const generateAvater = async (text) => {
     const prompt = `

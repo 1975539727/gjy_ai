@@ -11,15 +11,15 @@ const getImages=(page,pageSize=10)=>{
 
 export default [
    {
-        // ?page=1  queryString
-        url:'/api/images',
-        method:'get',
-        response:({query})=>{
-        const page=Number(query.page) || 1;
-        return {
-                code:0,
-                data:getImages(page)
-        }
-        },
+    // ?page=1  queryString
+    url:'/api/images',
+    method:'get',
+    response:({query})=>{
+       const page=Number(query.page) || 1;
+       return {
+            code:0,
+            data:getImages(page)
+       }
+    },
    }
 ]

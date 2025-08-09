@@ -13,7 +13,7 @@ export const useImageStore = create((set,get) => ({
         set({loading:true}) //请求中
         const res =await getImages(get().page); //请求数据\
         console.log(res)
-        const newImages = res.data;
+        const newImages = res.data.data;
         // 之前的状态 
         set((state)=>({
             images:[...state.images,...newImages], //合并数据

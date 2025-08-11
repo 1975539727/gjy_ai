@@ -18,7 +18,6 @@ import Recommendsection from "@/pages/Recommendsection";
 import Categorylist from "@/pages/Categorylist";
 import Hotlist from "@/pages/Hotlist";
 function App() {
-
   return (
     <>
       <Suspense  fallback={<Loading />}>
@@ -27,7 +26,6 @@ function App() {
             <Route path='/*' element={<Navigate to="/home" />} />
             <Route path="/recommend" element={<Recommendsection />} />
             <Route path='/home' element={<Home />} >
-              <Route path="recommend" element={<Recommendsection />} />
               <Route path="category" element={<Categorylist />} />
               <Route path="hot" element={<Hotlist />} />
             </Route>

@@ -1,26 +1,17 @@
 .container {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    /* Flexbox 布局，让子元素横向排列 */
     display: flex;
-    /* 垂直方向居中对齐 */
     align-items: center;
-    /* 水平方向默认就是横向排列，可省略 */
-    flex-direction: row; 
-    /* 可选：如果需要间距，可添加 */
-    gap: 8px; 
-  }
-  
-  .bookIcon {
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 0;
+}
+
+.bookIcon {
     width: 80px;
     height: 80px;
-    /* 确保图标和文字基线对齐（可选） */
-    vertical-align: middle; 
-  }
-  
-  .text {
+}
+
+.text {
     font-size: 32px;
     font-weight: 800;
     font-family: "Microsoft YaHei", "SimHei", sans-serif;
@@ -29,7 +20,5 @@
     color: transparent;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     letter-spacing: -1px;
-    z-index: 2;
-    /* 让文字和图标垂直居中对齐（可选） */
-    align-self: center; 
-  }
+    align-self: center;
+}

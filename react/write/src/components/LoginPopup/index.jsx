@@ -11,27 +11,29 @@ const LoginPopup = (props) => {
     password: ''
   })
   const [submitting, setSubmitting] = useState(false)
-  const handleLogin = async () => {
-    const { username, password } = form
-    console.log(username, password)
-    if (!username || !password) {
+  // ... existing code ...
+const handleLogin = async () => {
+  const { username, password } = form
+  if (!username || !password) {
       Toast.fail('请填写用户名和密码')
       return
-    }
-
-     setSubmitting(true)
-     console.log(username, password)
-     console.log('onClose 函数已调用')
-      console.log('当前 visible 值:', visible)
-      await login({username, password}) // 调用全局状态登录
-      Toast.success('登录成功')
-
-      onClose() // 登录成功后关闭弹窗
-      console.log('onClose 函数已调用')
-      console.log('当前 visible 值:', visible)
-      setSubmitting(false)
   }
 
+  setSubmitting(true)
+  try {
+      await login({username, password}) // 调用全局状态登录
+      Toast.success('登录成功')
+      onClose() // 登录成功后关闭弹窗
+  } catch (error) {
+      console.error('登录失败:', error);
+      Toast.fail('登录失败，请重试');
+      localStorage.removeItem('token'); // 清除无效 token
+      // 这里可添加代码更新 store 中的登录状态为 false
+  } finally {
+      setSubmitting(false)
+  }
+}
+// ... existing code ...
   return (
     <Popup
       visible={visible}

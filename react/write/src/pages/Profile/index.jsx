@@ -21,18 +21,18 @@ import { generateAvater } from '@/llm'
 import { useUserStore } from '@/store/user'
 import LoginPopup from '@/components/LoginPopup'
 const Profile = () => {
-  const { user, isLogin, login,logout } = useUserStore() 
-  const [userInfo, setUserInfo] = useState({
-    nickname: '奶龙',
-    level: '5级',
-    slogan: '保持热爱，奔赴山海。',
-    avatar: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'
-  })
-
+  const { logout } = useUserStore() 
   const [showActionSheet, setShowActionSheet] = useState(false)
   const [loading, setLoading] = useState(false)
   const [showLoginPopup, setShowLoginPopup] = useState(false) // 控制登录弹窗显示
-  
+  const [userInfo, setUserInfo] = useState(
+    {
+      nickname: '奶龙',
+      level: '5级',
+      slogan: '保持热爱，奔赴山海。',
+      avatar: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'
+  }
+  )
   const Logout = async () => {
     await logout() // 调用全局状态登出
     Toast.success('退出成功')
@@ -54,8 +54,6 @@ const Profile = () => {
       setLoading(false)
     }
   }
-
-
   const actions = [
     {
       name: '🎨 AI生成头像',
@@ -71,7 +69,7 @@ const Profile = () => {
 
   return (
     <div className={styles.container}>
-      {localStorage.getItem('token')!=='1' ? (
+      {localStorage.getItem('token') ? (
         <>
           {/* 用户信息 */}
           <div className={styles.user}>

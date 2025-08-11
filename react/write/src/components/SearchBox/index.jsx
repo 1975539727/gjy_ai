@@ -1,30 +1,22 @@
-import { Search } from '@react-vant/icons';
 import styles from './searchbox.module.css';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Search } from '@react-vant/icons';
 
 const SearchBox = () => {
-    const [searchText, setSearchText] = useState('');
+    const navigate = useNavigate();
 
-    const handleSearch = () => {
-        // 这里可以添加搜索逻辑，例如调用 API
-        console.log('搜索内容:', searchText);
+    const handleSearchClick = () => {
+        navigate('/search');
     };
 
     return (
-        <div className={styles.searchBox}>
+        <div className={styles.searchContainer}>
             <input 
-                className={styles.searchTxt} 
+                className={styles.searchInput} 
                 type="text" 
-                placeholder="Type to search" 
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
+                placeholder="请输入搜索内容" 
             />
-            <a href="#" className={styles.searchBtn} onClick={(e) => {
-                e.preventDefault();
-                handleSearch();
-            }}>
-                <Search className={styles.icon} />
-            </a>
+            <Search className={styles.searchIcon} onClick={handleSearchClick} />
         </div>
     );
 };

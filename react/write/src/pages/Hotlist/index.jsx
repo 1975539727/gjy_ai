@@ -1,8 +1,9 @@
+import List from "../../components/List";
 const Hotlist = () => {
     return (
-        <div>
-            <h1>Hotlist</h1>
-        </div>
+       
+        <List />
+
     )
 }
 export default Hotlist;

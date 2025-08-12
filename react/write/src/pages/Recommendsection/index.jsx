@@ -5,6 +5,8 @@ import {
    useEffect
 } from  'react'
 import Waterfall from "@/components/WaterFall";
+import useTitle from '@/hooks/useTitle'
+useTitle('推荐')
 const Recommendsection=()=>{
     const {images,loading,fetchMore}=useImageStore();
     useEffect(()=>{

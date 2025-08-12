@@ -20,6 +20,8 @@ import styles from './profile.module.css'
 import { generateAvater } from '@/llm'
 import { useUserStore } from '@/store/user'
 import LoginPopup from '@/components/LoginPopup'
+import useTitle from '@/hooks/useTitle'
+useTitle('我的')
 const Profile = () => {
   const { logout } = useUserStore() 
   const [showActionSheet, setShowActionSheet] = useState(false)

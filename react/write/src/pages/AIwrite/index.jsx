@@ -3,6 +3,7 @@ import { Button, Input, Loading, Toast } from 'react-vant';
 import { ChatO, UserO } from '@react-vant/icons';
 import { write } from '@/llm';
 import styles from './aiwrite.module.css';
+import useTitle  from '@/hooks/useTitle';
 
 const AIWriter = () => {
     const [text, setText] = useState('');
@@ -54,6 +55,7 @@ const AIWriter = () => {
     };
 
     return (
+        
         <div className={styles.chatContainer}>
             {/* 聊天区域 */}
             <div className={styles.chatArea}>

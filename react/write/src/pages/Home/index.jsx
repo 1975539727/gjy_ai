@@ -4,11 +4,14 @@ import SearchBox from "@/components/SearchBox";
 import styles from './home.module.css';
 import { Routes, Route, Link, Navigate, Outlet,useNavigate } from 'react-router-dom';
 import { Tabs } from 'react-vant';
-
+import useTitle from '@/hooks/useTitle'
+import { useEffect } from'react';
+import { use } from "react";
 const items = [
   { id: 1, title: '热门作文', path: 'hot' },
   { id: 2, title: '作文分类', path: 'category' },
 ];
+
 
 const NavBar = () => {
   const  navigate  = useNavigate(); // 解构出 navigate 函数
@@ -41,6 +44,7 @@ const NavBar = () => {
 };
 
 const Home = () => {
+  useTitle('首页')
   return (
     <div className={`${styles.container} ${styles.flexContainer}`}>
       <Header />

@@ -31,7 +31,7 @@ const Profile = () => {
       level: '5级',
       slogan: '保持热爱，奔赴山海。',
       avatar: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'
-  }
+    }
   )
   const Logout = async () => {
     await logout() // 调用全局状态登出

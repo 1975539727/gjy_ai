@@ -33,7 +33,7 @@ function App() {
     })
 
     const onMessageReceived = (e) => {
-      console.log(e, '来自主线程');
+      // console.log(e, '来自主线程');
       switch(e.data.status) {
         case 'initiate':
           // llm ready 了吗？
@@ -41,26 +41,32 @@ function App() {
           setProgressItems(prev => [...prev, e.data])
         break;
         case 'progress':
-          console.log(e.data)
+          // console.log(e.data)
           setProgressItems(
-            prev => prev.map(item =>{
-              if(item.file === e.data.file){
+            prev => prev.map(item => {
+              if (item.file === e.data.file) {
                 return {
                   ...item,
                   progress: e.data.progress
                 }
               }
-              return item;
+              return item
             })
           )
         break;
         case 'done':
-          setProgressItems(
-            prev => prev.filter(item => item.file !== e.data.file)
-          )
+        setProgressItems(
+          prev => prev.filter(item => item.file !== e.data.file)
+        )
         break;
         case 'ready':
           setReady(true);
+        break;
+        case 'complete':
+          setDisabled(false);
+          const blobUrl = URL.createObjectURL(e.data.output);
+          // console.log(blobUrl);
+          setOutput(blobUrl);
         break;
       }
     }
@@ -94,23 +100,23 @@ function App() {
         backdropFilter: 'blur(8px)'
       }}
       >
-       {
-        isLoading&& (
-          <label  className='text-white text-xl p-3'>
-            Loading models...(only run once)
-          </label>
-        )
-       }
-       {
-        progressItems.map(data =>(
-          <div key={`${data.name}/${data.file}`}>
-              <Progress
-              text={`${data.name}/${data.file}`} 
-              percentage={data.progress} 
-              />
-          </div>
-        ))
-       }
+        {
+          isLoading && (
+            <label className="text-white text-xl p-3">
+              Loading models... (only run once)
+            </label>
+          )
+        }
+        {
+          progressItems.map(data => (
+            <div key={`${data.name}/${data.file}`}>
+              <Progress 
+                text={`${data.name}/${data.file}`} 
+                percentage={data.progress}
+              /> 
+            </div>
+          ))
+        }
       </div>
       {/* tts 功能区 */}
       <div className="bg-white p-8 rounded-lg w-full max-w-xl m-2">

@@ -33,7 +33,7 @@ export const write =async (
         }
     }catch(err){
        return {
-         code:0,
+         code:1,
          message:'出错了'
        }
     }

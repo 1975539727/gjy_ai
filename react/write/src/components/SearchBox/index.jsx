@@ -11,11 +11,11 @@ const SearchBox = () => {
 
     return (
         <div className={styles.searchContainer}>
-            <input 
+            {/* <input 
                 className={styles.searchInput} 
                 type="text" 
                 placeholder="请输入搜索内容" 
-            />
+            /> */}
             <Search className={styles.searchIcon} onClick={handleSearchClick} />
         </div>
     );

@@ -12,6 +12,7 @@ import{
 const AIwrite = lazy(() => import('./pages/AIwrite'));
 const Home = lazy(() => import('./pages/Home'));
 const Profile = lazy(() => import('./pages/Profile'));
+const Search = lazy(() => import('./pages/Search'));
 import Loading from './components/Loading';
 import MainLayout from './components/MainLayout';
 import Recommendsection from "@/pages/Recommendsection";
@@ -32,6 +33,7 @@ function App() {
             <Route path="/aiwrite" element={<AIwrite />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
+          <Route path="/search" element={<Search />} />
         </Routes>
       </Suspense>
     </>

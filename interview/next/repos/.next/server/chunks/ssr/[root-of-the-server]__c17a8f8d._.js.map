@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file:///D:/lesson_si/interview/next/repos/app/repos/page.tsx"],"sourcesContent":["export default function ReposPage (){\r\n    return (\r\n        <main className=\"container mx-auto p-4\">\r\n            <h1 className=\"text-2xl font-bold mb-4\">Github Repos</h1>\r\n            \r\n        </main>\r\n    )\r\n}"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACpB,qBACI,yRAAC;QAAK,WAAU;kBACZ,cAAA,yRAAC;YAAG,WAAU;sBAA0B;;;;;;;;;;;AAIpD","debugId":null}}]
+}

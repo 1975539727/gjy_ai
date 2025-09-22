@@ -27,7 +27,6 @@ http.createServer(function (request,response){
             response.statusCode = 304; //  304 Not Modified  客户端缓存的文件没有变化 
             response.end()
             return ; 
-
         }
         response.writeHead(200,{
             'content-type':'text/javascript',

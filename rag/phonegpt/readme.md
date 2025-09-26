@@ -81,6 +81,17 @@
     先解析成js,再运行 
 - langchain Agent 开发框架 
   coze promptTemplate  模板  记忆MessageMemory Community 
+- 正则html 替换 
+  
+- vercel的AI版图
+  - next.js
+  - ai-sdk
+  - js 的云端运行环境
+  - v0 bolt 
+    ai-sdk/react 流式输出 -> prompt -> embedding  
+    网页(wikipidia) -> langchain/community+puppeteer(爬取) -> 
+    langchain提供的分块机制 (chunks? 段落 ) -> embedding -> supabase 存储  
+    -> supabase 查询 
 
 ## 遇到的问题
 - ai-sdk 检索的时候, LLM 给了老版本的代码 调试出了问题,mcp 解决问题

@@ -92,12 +92,17 @@
     网页(wikipidia) -> langchain/community+puppeteer(爬取) -> 
     langchain提供的分块机制 (chunks? 段落 ) -> embedding -> supabase 存储  
     -> supabase 查询 
+  - 向量存储
+
 
 ## 遇到的问题
 - ai-sdk 检索的时候, LLM 给了老版本的代码 调试出了问题,mcp 解决问题
 - ts-node 编译是不支持esm,
   tsconfig.json ts 配置文件 
   支持ts-node commonjs 
+
+- rpc 调用
+  在supabase 数据库中调用函数 
   
   
 

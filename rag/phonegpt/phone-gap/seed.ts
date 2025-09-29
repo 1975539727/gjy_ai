@@ -76,7 +76,8 @@ const loadData = async (webpages: string[]) => {
 }
 // 知识库的来源，可配置
 loadData([
-  "https://en.wikipedia.org/wiki/Samsung_Galaxy_S25",
+  "https://www.visit8.com/",
+  // "https://en.wikipedia.org/wiki/Samsung_Galaxy_S25",
   // "https://en.wikipedia.org/wiki/Samsung_Galaxy_S24",
   // "https://en.wikipedia.org/wiki/IPhone_16",
   // "https://en.wikipedia.org/wiki/IPhone_16_Pro",

@@ -23,3 +23,4 @@
   高手特别烦 被类式写法限制,this 丢失的问题
 
 - vue3 setup 组合式API 借鉴 react 函数式写法 
+- vuex/pinia 
